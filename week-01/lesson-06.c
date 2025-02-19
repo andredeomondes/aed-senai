@@ -7,7 +7,7 @@ float calcularArea(float base, float altura) {
 
 int main() {
 	
-	float base, atura, area;
+	float base, altura, area;
 	
 	printf("Digite a base: ");
 	scanf("%f", &base);
@@ -15,7 +15,7 @@ int main() {
 	printf("Digite a altura: ");
 	scanf("%f", &altura);
 	
-	area = calcularArea(vase, altura);
+	area = calcularArea(base, altura);
 	printf("O valor da area e: %.2f", area);
 	return 0;
 }
