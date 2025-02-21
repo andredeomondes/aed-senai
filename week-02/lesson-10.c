@@ -1,60 +1,51 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <math.h>
 
-/*
-
-- Crie um algoritmo que receba 5 valores inteiros
-- Em uma função indenpendente, eleve os valores ao quadrado
-- Para finalizar, imprima em tela os novos valores
-
-*/
-
-
-
-    // Função que eleva os números ao quadrado
-float elevarAoQuadrado (float numero) {
-    return numero*numero;
-    
+// Função que calcula o quadrado de cada número no vetor
+void quadradoPonteiro(int quantidade, int *numeros, int *quadrados) {
+    for (int i = 0; i < quantidade; i++) {
+        *(quadrados + i) = pow(*(numeros + i), 2); // Calcula o quadrado do número
+    }
 }
 
-
+// Função que imprime o número original e o número ao quadrado
+void impressaoPonteiro(int quantidade, int numeros[], int quadrados[]) {
+    for (int i = 0; i < quantidade; i++) {
+        printf("(%d) Numero: %d | Numero ao quadrado: %d \n", (i+1), numeros[i], quadrados[i]);
+    }
+}
 
 int main() {
-    printf("\n------------------------------------------------\n");
-    printf("\nBem-vindo ao elevador de números ao quadrado!\n");
-    printf("\n------------------------------------------------\n");
-    
+    int quantidade;
 
-    int tamanhoDoVetor = 5;
-    float numeros[tamanhoDoVetor], numerosElevados[tamanhoDoVetor];
-    
-    
-    // Leitura dos Numeros
-    for (int i = 0; i < tamanhoDoVetor; i++) {
-        printf("\nDigite o número (%d): ", i+1);
-        scanf("%f", &numeros[i]);
-    
-    // Salvando numeros elevados    
-        numerosElevados[i] = elevarAoQuadrado(numeros[i]);
-        
-    }
-    
-    printf("\n------------------------------------------------\n");
-    printf("Valores confirmados: ");
-    
-    
-    for (int i = 0; i < tamanhoDoVetor; i++) {
-        printf("\n%.1f        | ",numeros[i]);
-        
+    // Solicita a quantidade de números a serem inseridos
+    printf("----------------------------------------------------------------\n");
+    printf("|                BEM VINDO A CALCULADORA QUADRATICA!           |\n"); 
+    printf("----------------------------------------------------------------\n");
 
-        printf(" %.1f   \n", numerosElevados[i]);
+    printf("\nDigite a quantidade de numeros que voce quer inserir: ");
+    scanf("%d", &quantidade);
+    printf("\n----------------------------------------------------------------\n");
+
+    // Definir os vetores com o tamanho correto
+    int numeros[quantidade];
+    int quadrados[quantidade];
+
+    // Ler a quantidade inserida de números pelo usuário
+    for (int i = 0; i < quantidade; i++) {
+        printf("Digite um numero (%d): ", i+1);
+        scanf("%d", &numeros[i]);
+    printf("----------------------------------------------------------------\n");
     }
-    
-    printf("\n------------------------------------------------\n");
+
+    // Calcular o quadrado dos números e armazenar no vetor 'quadrados'
+    quadradoPonteiro(quantidade, numeros, quadrados);
+
+    // Imprimir os números originais e os números ao quadrado
+    impressaoPonteiro(quantidade, numeros, quadrados);
+
+    printf("\n----------------------------------------------------------------\n");
+    printf("    Encerrando programa...");
     
     return 0;
-    
-
-
 }
